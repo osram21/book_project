@@ -5,6 +5,8 @@ public class BookLend {
 	private BookInfo bSubCode;		// 도서 중복 코드
 	private boolean isLending;		// 대여 여부
 	private int bLendCount;			// 총 대여횟수
+	private BookInfo bookinfo; // 도서
+	private PublisherInfo publisherinfo; // 출판사
 	
 	public BookLend() {		}
 
@@ -13,6 +15,34 @@ public class BookLend {
 		this.bSubCode = bSubCode;
 		this.isLending = isLending;
 		this.bLendCount = bLendCount;
+	}
+
+	
+	public BookLend(BookInfo bCode, BookInfo bSubCode, boolean isLending, int bLendCount, BookInfo bookinfo,
+			PublisherInfo publisherinfo) {
+		super();
+		this.bCode = bCode;
+		this.bSubCode = bSubCode;
+		this.isLending = isLending;
+		this.bLendCount = bLendCount;
+		this.bookinfo = bookinfo;
+		this.publisherinfo = publisherinfo;
+	}
+
+	public BookInfo getBookinfo() {
+		return bookinfo;
+	}
+
+	public void setBookinfo(BookInfo bookinfo) {
+		this.bookinfo = bookinfo;
+	}
+
+	public PublisherInfo getPublisherinfo() {
+		return publisherinfo;
+	}
+
+	public void setPublisherinfo(PublisherInfo publisherinfo) {
+		this.publisherinfo = publisherinfo;
 	}
 
 	public BookInfo getbCode() {

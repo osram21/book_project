@@ -11,4 +11,5 @@ public class PaymentIOMapperImpl implements PaymentIOMapper {
 	public PaymentIOMapperImpl(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
 }
