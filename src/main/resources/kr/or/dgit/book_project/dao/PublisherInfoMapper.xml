@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.book_project.dao.PublisherInfoMapper">
+	<resultMap type="PublisherInfo" id="PublisherInfoResult">
+		<id column="p_code" property="pCode"/>
+		<result column="publisher" property="publisher"/>
+		<result column="p_name" property="pName"/>
+		<result column="p_tel" property="pTel"/>
+		<result column="p_zip_code" property="pZipCode"/>
+		<result column="p_address" property="pAddress"/>
+	</resultMap>
+
+</mapper>

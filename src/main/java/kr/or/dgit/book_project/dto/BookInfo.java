@@ -10,13 +10,14 @@ public class BookInfo {		 		// 도서
 	private int price;				// 가격
 	private Date insert_date;		// 도서등록일
 	private boolean isDel;			// 도서폐기여부
-	private Coden cName;			// 분류
-	private PublisherInfo pCode;	// 출판사 코드
+	private Coden coden;			// 분류 (일단 고침)
+	private PublisherInfo publisherinfo;	// 출판사 코드 (일단 고침)
+	private BookLend booklend; //추가햇음
 	
 	public BookInfo() {		}
 
 	public BookInfo(String bCode, String bSubCode, String bName, String author,
-					int price, Date insert_date, boolean isDel, Coden cName, PublisherInfo pCode) {
+					int price, Date insert_date, boolean isDel, Coden coden, PublisherInfo publisherinfo) {
 		this.bCode = bCode;
 		this.bSubCode = bSubCode;
 		this.bName = bName;
@@ -24,8 +25,32 @@ public class BookInfo {		 		// 도서
 		this.price = price;
 		this.insert_date = insert_date;
 		this.isDel = isDel;
-		this.cName = cName;
-		this.pCode = pCode;
+		this.coden = coden;
+		this.publisherinfo = publisherinfo;
+	}
+	
+	// 일단 생성자 다 생성
+	public BookInfo(String bCode, String bSubCode, String bName, String author, int price, Date insert_date,
+			boolean isDel, Coden coden, PublisherInfo publisherinfo, BookLend booklend) {
+		super();
+		this.bCode = bCode;
+		this.bSubCode = bSubCode;
+		this.bName = bName;
+		this.author = author;
+		this.price = price;
+		this.insert_date = insert_date;
+		this.isDel = isDel;
+		this.coden = coden;
+		this.publisherinfo = publisherinfo;
+		this.booklend = booklend;
+	}
+	// 도서대여정보 겟
+	public BookLend getBooklend() {
+		return booklend;
+	}
+	// 도서대여정보 셋
+	public void setBooklend(BookLend booklend) {
+		this.booklend = booklend;
 	}
 
 	public String getbCode() {
@@ -85,25 +110,25 @@ public class BookInfo {		 		// 도서
 	}
 
 	public Coden getcName() {
-		return cName;
+		return coden;
 	}
 
-	public void setcName(Coden cName) {
-		this.cName = cName;
+	public void setcName(Coden coden) {
+		this.coden = coden;
 	}
 
 	public PublisherInfo getpCode() {
-		return pCode;
+		return publisherinfo;
 	}
 
-	public void setpCode(PublisherInfo pCode) {
-		this.pCode = pCode;
+	public void setpCode(PublisherInfo publisherinfo) {
+		this.publisherinfo = publisherinfo;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
 				"%s, %s, %s, %s, %s, %s, %s, %s,%s",
-				bCode, bSubCode, bName, author, price, insert_date, isDel, cName, pCode);
+				bCode, bSubCode, bName, author, price, insert_date, isDel, coden, publisherinfo);
 	}
 }

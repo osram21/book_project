@@ -18,10 +18,10 @@ public class BookLendService {
 		return instance;
 	}
 	
-	public BookLend selectIslending(BookLend bookLend){
+	public BookLend selectIslending(boolean isLending){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			BookLendMapper booklendMapper = new BookLendMapperImpl(sqlSession);
-			return booklendMapper.selectIslending(bookLend);
+			return booklendMapper.selectIslending(false);
 		}
 	}
 	

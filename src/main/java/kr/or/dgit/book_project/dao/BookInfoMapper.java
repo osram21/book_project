@@ -1,5 +1,7 @@
 package kr.or.dgit.book_project.dao;
 
-public interface BookInfoMapper {
+import kr.or.dgit.book_project.dto.BookInfo;
 
+public interface BookInfoMapper {
+	BookInfo selectBookLendisLending(BookInfo bookinfo);
 }
