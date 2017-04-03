@@ -1,14 +1,16 @@
 package kr.or.dgit.book_project.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class MemberLend {
-	private MemberInfo mCode;		// 회원코드
+	private MemberInfo memberinfo;	// 회원코드
 	private boolean isPosbl;		// 대여가능여부
 	private int delayCount;			// 연체 횟수
 	private int mLendCount;			// 총 대여 횟수	
 	private int mNowCount;			// 현재 대여 권수
 	private Date blackDate;			// 대여금지일
+	private List<PaymentIO> paymentIo;
 	
 	public MemberLend() {	}
 

@@ -34,11 +34,18 @@ public class BookLendTest {
 		   booklend.setBookInfo(bookinfo);*/
 		   List<BookLend> SelectIslending = booklendService.selectIslending();
 		   Assert.assertNotNull(SelectIslending);
-		   
-		   
 		   /*
 		   booklendService.selectIslending(booklend);*/
-		   
-		
+	   }
+	   
+	   @Test
+	   public void TestSelectIslendingInsert(){
+		   BookInfo bookinfo = new BookInfo();
+		   bookinfo.setbCode("J001");
+		   bookinfo.setbSubCode("0");
+		   BookLend booklend = new BookLend();
+		   booklend.setBookInfo(bookinfo);
+		   BookLend selectIslendingInsert = booklendService.selectIslendingInsert(booklend);
+		   Assert.assertNotNull(selectIslendingInsert);
 	   }
 }

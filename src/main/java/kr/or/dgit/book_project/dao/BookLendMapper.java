@@ -6,4 +6,5 @@ import kr.or.dgit.book_project.dto.BookLend;
 
 public interface BookLendMapper {
 	List<BookLend> selectIslending();
+	BookLend selectIslendingInsert(BookLend booklend);
 }

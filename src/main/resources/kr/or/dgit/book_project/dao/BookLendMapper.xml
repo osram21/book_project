@@ -3,18 +3,42 @@
 <mapper namespace="kr.or.dgit.book_project.dao.BookLendMapper">
 	
 	<resultMap type="BookLend" id="BookLendResult">
-		<result column="is_lending" property="isLending"/>
-		<result column="b_lend_count" property="bLendCount"/>
-		<association property="bookInfo" resultMap="kr.or.dgit.book_project.dao.BookInfoMapper.BookInfoResult"></association>
+		<result column="is_lending" property="isLending" />
+		<result column="b_lend_count" property="bLendCount" />
+		<association property="bookInfo"
+			resultMap="kr.or.dgit.book_project.dao.BookInfoMapper.BookInfoResult"></association>
 		<!-- <collection property="bookPaymentIO" resultMap="kr.or.dgit.book_project.dao.PaymentIOMapper.PaymentIOResult"></collection> -->
 	</resultMap>
-	
+	<sql id="whereSql">
+		<where>
+			<if test="bCode != null">
+				b.b_code = #{bookInfo.bCode}
+			</if>
+			<if test="bSubCode != null">
+				and b.b_sub_code = #{bookInfo.bSubCode}
+			</if>
+		</where>
+	</sql>
 	<select id="selectIslending" resultMap="BookLendResult">
-		SELECT b.b_code, b.b_sub_code, b_name, author, p.publisher, price, bl.b_lend_count FROM bookInfo b 
-		inner join publisherInfo p on b.p_code = p.p_code 
+		SELECT b.b_code,
+		b.b_sub_code, b_name, author, p.publisher, price, bl.b_lend_count FROM
+		bookInfo b
+		inner join publisherInfo p on b.p_code = p.p_code
+		inner join bookLend bl on b.b_code = bl.b_code and b.b_sub_code =
+		bl.b_sub_code
+		where bl.is_lending = false
+	</select>
+
+	<select id="selectIslendingInsert" resultMap="BookLendResult"
+		parameterType="BookLend">
+		SELECT b.b_code, b.b_sub_code b_name, author, p.publisher, price,
+		bl.b_lend_count FROM bookInfo b
+		inner join publisherInfo p on b.p_code = p.p_code
 		inner join bookLend bl on b.b_code = bl.b_code and b.b_sub_code = bl.b_sub_code
-		 where bl.is_lending = false 
-	</select> 
+		where b.b_code= #{bookInfo.bCode} and b.b_sub_code = #{bookInfo.bSubCode}
+		
+	</select>
+
 	
-	
+
 </mapper>

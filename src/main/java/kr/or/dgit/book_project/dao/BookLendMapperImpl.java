@@ -20,4 +20,9 @@ public class BookLendMapperImpl implements BookLendMapper {
 		log.debug("selectIslending");
 		return sqlSession.selectList(namespace+"selectIslending");
 	}
+	@Override
+	public BookLend selectIslendingInsert(BookLend booklend) {
+		log.debug("selectIslendingInsert");
+		return sqlSession.selectOne(namespace+"selectIslendingInsert",booklend);
+	}
 }

@@ -27,5 +27,12 @@ public class BookLendService {
 		}
 	}
 	
+	public BookLend selectIslendingInsert(BookLend booklend){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			BookLendMapper booklendMapper = new BookLendMapperImpl(sqlSession);
+			return booklendMapper.selectIslendingInsert(booklend);
+		}
+	}
+	
 	
 }
