@@ -7,12 +7,13 @@ public class PaymentIO {
 	private BookInfo bCode; 		// 도서코드
 	private BookInfo bSubCode;		// 도서중복코드
 	private MemberInfo mCode;		// 회원코드
-	private Date lendDate;			// 대여일
-	private Date returnDate;		// 반납일
+	private String lendDate;			// 대여일  스트링 바꿈
+	private String returnDate;		// 반납일
 	
 	public PaymentIO() {	}
 
-	public PaymentIO(int no, BookInfo bCode, BookInfo bSubCode, MemberInfo mCode, Date lendDate, Date returnDate) {
+	public PaymentIO(int no, BookInfo bCode, BookInfo bSubCode, MemberInfo mCode, String lendDate, String returnDate) {
+		super();
 		this.no = no;
 		this.bCode = bCode;
 		this.bSubCode = bSubCode;
@@ -20,7 +21,7 @@ public class PaymentIO {
 		this.lendDate = lendDate;
 		this.returnDate = returnDate;
 	}
-
+	
 	public int getNo() {
 		return no;
 	}
@@ -53,24 +54,25 @@ public class PaymentIO {
 		this.mCode = mCode;
 	}
 
-	public Date getLendDate() {
+	public String getLendDate() {
 		return lendDate;
 	}
 
-	public void setLendDate(Date lendDate) {
+	public void setLendDate(String lendDate) {
 		this.lendDate = lendDate;
 	}
 
-	public Date getReturnDate() {
+	public String getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s, %s, %s, %s, %s, %s", no, bCode, bSubCode, mCode, lendDate, returnDate);
+		return String.format("PaymentIO [no=%s, bCode=%s, bSubCode=%s, mCode=%s, lendDate=%s, returnDate=%s]", no,
+				bCode, bSubCode, mCode, lendDate, returnDate);
 	}
 }

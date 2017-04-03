@@ -1,7 +1,9 @@
 package kr.or.dgit.book_project.dao;
 
+import java.util.List;
+
 import kr.or.dgit.book_project.dto.BookLend;
 
 public interface BookLendMapper {
-	BookLend selectIslending(boolean isLending);
+	List<BookLend> selectIslending();
 }

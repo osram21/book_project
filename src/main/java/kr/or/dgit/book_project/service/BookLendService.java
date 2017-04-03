@@ -1,5 +1,7 @@
 package kr.or.dgit.book_project.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -18,10 +20,10 @@ public class BookLendService {
 		return instance;
 	}
 	
-	public BookLend selectIslending(boolean isLending){
+	public List<BookLend> selectIslending(){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			BookLendMapper booklendMapper = new BookLendMapperImpl(sqlSession);
-			return booklendMapper.selectIslending(false);
+			return booklendMapper.selectIslending();
 		}
 	}
 	

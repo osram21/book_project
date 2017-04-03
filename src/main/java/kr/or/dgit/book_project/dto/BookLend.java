@@ -1,37 +1,30 @@
 package kr.or.dgit.book_project.dto;
 
+import java.util.List;
+
 public class BookLend {
-	/*private BookInfo bCode;			// 도서코드
-	private BookInfo bSubCode;		// 도서 중복 코드*/
-	
+	private BookInfo bookInfo;		
 	private boolean isLending;		// 대여 여부
 	private int bLendCount;			// 총 대여횟수
+	private List<PaymentIO> bookPaymentIO; //추가햇음
 	
-	
-	public BookLend() {		}
+	public BookLend() {	}
 
-	public BookLend(/*BookInfo bCode, BookInfo bSubCode,*/ boolean isLending, int bLendCount) {
-		/*this.bCode = bCode;
-		this.bSubCode = bSubCode;*/
+	public BookLend(BookInfo bookInfo, boolean isLending, int bLendCount, List<PaymentIO> bookPaymentIO) {
+		super();
+		this.bookInfo = bookInfo;
 		this.isLending = isLending;
 		this.bLendCount = bLendCount;
+		this.bookPaymentIO = bookPaymentIO;
+	}
+	
+	public BookInfo getBookInfo() {
+		return bookInfo;
 	}
 
-	/*public BookInfo getbCode() {
-		return bCode;
+	public void setBookInfo(BookInfo bookInfo) {
+		this.bookInfo = bookInfo;
 	}
-
-	public void setbCode(BookInfo bCode) {
-		this.bCode = bCode;
-	}
-
-	public BookInfo getbSubCode() {
-		return bSubCode;
-	}
-
-	public void setbSubCode(BookInfo bSubCode) {
-		this.bSubCode = bSubCode;
-	}*/
 
 	public boolean isLending() {
 		return isLending;
@@ -49,8 +42,17 @@ public class BookLend {
 		this.bLendCount = bLendCount;
 	}
 
+	public List<PaymentIO> getBookPaymentIO() {
+		return bookPaymentIO;
+	}
+
+	public void setBookPaymentIO(List<PaymentIO> bookPaymentIO) {
+		this.bookPaymentIO = bookPaymentIO;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("%s, %s", /*bCode, bSubCode*/isLending, bLendCount);
+		return String.format("BookLend [bookInfo=%s, isLending=%s, bLendCount=%s, bookPaymentIO=%s]", bookInfo,
+				isLending, bLendCount, bookPaymentIO);
 	}
 }

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.dgit.book_project.dao.BookLend">
+<mapper namespace="kr.or.dgit.book_project.dao.BookLendMapper">
 	
 	<resultMap type="BookLend" id="BookLendResult">
-		<result column="is_lending" property="bLendCount"/>
+		<result column="is_lending" property="isLending"/>
 		<result column="b_lend_count" property="bLendCount"/>
+		<association property="bookInfo" resultMap="kr.or.dgit.book_project.dao.BookInfoMapper.BookInfoResult"></association>
+		<!-- <collection property="bookPaymentIO" resultMap="kr.or.dgit.book_project.dao.PaymentIOMapper.PaymentIOResult"></collection> -->
 	</resultMap>
 	
-	<select id="selectIslending" parameterType="BookLend" resultMap="BookLendResult">
+	<select id="selectIslending" resultMap="BookLendResult">
 		SELECT b.b_code, b.b_sub_code, b_name, author, p.publisher, price, bl.b_lend_count FROM bookInfo b 
 		inner join publisherInfo p on b.p_code = p.p_code 
 		inner join bookLend bl on b.b_code = bl.b_code and b.b_sub_code = bl.b_sub_code
 		 where bl.is_lending = false 
-	</select>
+	</select> 
 	
 	
 </mapper>

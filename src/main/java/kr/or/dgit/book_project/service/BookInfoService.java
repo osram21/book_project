@@ -16,10 +16,10 @@ public class BookInfoService {
 	public static BookInfoService getInstance() {
 		return instance;
 	}
-	public BookInfo selectBookLendisLending(BookInfo bookinfo){
+	/*public BookInfo selectBookLendisLending(BookInfo bookinfo){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			BookInfoMapper bookinfoMapper = new BookInfoMapperImpl(sqlSession);
 			return bookinfoMapper.selectBookLendisLending(bookinfo);
 		}
-	}
+	}*/
 }

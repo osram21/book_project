@@ -1,6 +1,7 @@
 package kr.or.dgit.book_project.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class BookInfo {		 		// 도서
 	private String bCode;			// 도서코드
@@ -8,49 +9,27 @@ public class BookInfo {		 		// 도서
 	private String bName;			// 도서명	
 	private String author;			// 저자
 	private int price;				// 가격
-	private Date insert_date;		// 도서등록일
+	private String insertDate;		// 도서등록일
 	private boolean isDel;			// 도서폐기여부
 	private Coden coden;			// 분류 (일단 고침)
 	private PublisherInfo publisherinfo;	// 출판사 코드 (일단 고침)
-	private BookLend booklend; //추가햇음
+	
 	
 	public BookInfo() {		}
-
-	public BookInfo(String bCode, String bSubCode, String bName, String author,
-					int price, Date insert_date, boolean isDel, Coden coden, PublisherInfo publisherinfo) {
-		this.bCode = bCode;
-		this.bSubCode = bSubCode;
-		this.bName = bName;
-		this.author = author;
-		this.price = price;
-		this.insert_date = insert_date;
-		this.isDel = isDel;
-		this.coden = coden;
-		this.publisherinfo = publisherinfo;
-	}
 	
 	// 일단 생성자 다 생성
-	public BookInfo(String bCode, String bSubCode, String bName, String author, int price, Date insert_date,
-			boolean isDel, Coden coden, PublisherInfo publisherinfo, BookLend booklend) {
+	public BookInfo(String bCode, String bSubCode, String bName, String author, int price, String insertDate,
+			boolean isDel, Coden coden, PublisherInfo publisherinfo) {
 		super();
 		this.bCode = bCode;
 		this.bSubCode = bSubCode;
 		this.bName = bName;
 		this.author = author;
 		this.price = price;
-		this.insert_date = insert_date;
+		this.insertDate = insertDate;
 		this.isDel = isDel;
 		this.coden = coden;
 		this.publisherinfo = publisherinfo;
-		this.booklend = booklend;
-	}
-	// 도서대여정보 겟
-	public BookLend getBooklend() {
-		return booklend;
-	}
-	// 도서대여정보 셋
-	public void setBooklend(BookLend booklend) {
-		this.booklend = booklend;
 	}
 
 	public String getbCode() {
@@ -93,12 +72,12 @@ public class BookInfo {		 		// 도서
 		this.price = price;
 	}
 
-	public Date getInsert_date() {
-		return insert_date;
+	public String getInsertDate() {
+		return insertDate;
 	}
 
-	public void setInsert_date(Date insert_date) {
-		this.insert_date = insert_date;
+	public void setInsertDate(String insertDate) {
+		this.insertDate = insertDate;
 	}
 
 	public boolean isDel() {
@@ -109,26 +88,26 @@ public class BookInfo {		 		// 도서
 		this.isDel = isDel;
 	}
 
-	public Coden getcName() {
+	public Coden getCoden() {
 		return coden;
 	}
 
-	public void setcName(Coden coden) {
+	public void setCoden(Coden coden) {
 		this.coden = coden;
 	}
 
-	public PublisherInfo getpCode() {
+	public PublisherInfo getPublisherinfo() {
 		return publisherinfo;
 	}
 
-	public void setpCode(PublisherInfo publisherinfo) {
+	public void setPublisherinfo(PublisherInfo publisherinfo) {
 		this.publisherinfo = publisherinfo;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"%s, %s, %s, %s, %s, %s, %s, %s,%s",
-				bCode, bSubCode, bName, author, price, insert_date, isDel, coden, publisherinfo);
+				"BookInfo [bCode=%s, bSubCode=%s, bName=%s, author=%s, price=%s, insertDate=%s, isDel=%s, coden=%s, publisherinfo=%s]",
+				bCode, bSubCode, bName, author, price, insertDate, isDel, coden, publisherinfo);
 	}
 }

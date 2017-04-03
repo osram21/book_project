@@ -7,33 +7,14 @@
 		<result column="b_name" property="bName"/>
 		<result column="author" property="author"/>
 		<result column="price" property="price"/>
+		<result column="insert_date" property="insertDate"/>
+		<result column="is_del" property="isDel"/>
+		<association property="coden"
+         	resultMap="kr.or.dgit.book_project.dao.CodenMapper.CodenResult"></association>
+      	<association property="publisherinfo"
+         	resultMap="kr.or.dgit.book_project.dao.PublisherInfoMapper.PublisherInfoResult" />
 	</resultMap>
-	
-	<resultMap type="BookInfo" id="BookInfoResultExtends" extends="BookInfoResult">
-		<result column="is_lending" property="BookLend.bLendCount" javaType="Boolean"/>
-		<result column="b_lend_count" property="BookLend.bLendCount"/>
-	</resultMap>
-	
-	<resultMap type="BookInfo" id="BookInfoResultAssociation" extends="BookInfoResult">
-		<association property="BookLend" resultMap="kr.or.dgit.book_project.dao.BookLend"></association>
-	</resultMap>
-	
-	<select id="selectBookLendisLending" parameterType="BookInfo" resultMap="BookInfoResult">
-		select b.b_code,b.b_sub_code,b_name,b.author,b.price,bl.is_lending
-		from bookinfo b left join booklend bl on b.b_code=bl.b_code and b.b_sub_code=bl.b_sub_code
-		where bl.is_lending = false
-	</select>
-	
-<!-- 	<sql id="whereSql">
-		<if test="bl.is_lending != null"/>
-	</sql> -->
-	
-	<!-- <resultMap type="BookInfo" id="BookInfoResultExtends" extends="BookInfoResult">
-		<id column="p_code" property="PublisherInfo.pCode"/>
-		<result column="publisher" property="PublisherInfo.publisher"/>
-		<result column="p_name" property="PublisherInfo.pName"/>
-		<result column="p_tel" property="PublisherInfo.pTel"/>
-		<result column="p_zip_code" property="PublisherInfo.pZipCode"/>
-		<result column="p_address" property="PublisherInfo.pAddress"/>
-	</resultMap> -->
+
+      
+  
 </mapper>
